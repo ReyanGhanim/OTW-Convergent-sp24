@@ -1,0 +1,6 @@
+module Pods_OTWWatchiOSApp {
+  umbrella header "Pods-OTWWatchiOSApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

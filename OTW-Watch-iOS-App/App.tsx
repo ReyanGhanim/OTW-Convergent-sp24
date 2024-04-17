@@ -1,18 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import {useState } from 'react';
+import React, {useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AppleHealthKit, {HealthInputOptions, HealthKitPermissions} from 'react-native-health';
 import {useEffect} from 'react';
 
 const permissions: HealthKitPermissions = {
   permissions: {
-    read: [AppleHealthKit.Constants.Permissions.Steps],
+    read: [AppleHealthKit.Constants.Permissions.Steps, AppleHealthKit.Constants.Permissions.FlightsClimbed],
     write: [],
   },
 };
 
+const Value = ({ label, value }) => (
+  <View style={styles.valueContainer}>
+    <Text style={styles.label}>{label}</Text>
+    <Text style={styles.value}>{value}</Text>
+  </View>
+);
+
+
 export default function App() {
   const [hasPermissions, setHasPermission] = useState(false);
+  const [steps, setSteps] = useState(0);
+  const [flights, setFlights] = useState(0);
 
   useEffect(() => {
     AppleHealthKit.initHealthKit(permissions, (err) => {
@@ -21,7 +31,6 @@ export default function App() {
             return;
         }
         setHasPermission(true);
-
     });
   }, []);
 
@@ -31,7 +40,7 @@ export default function App() {
     }
 
     const options: HealthInputOptions = {
-      date: new Date().toISOString(),
+      date: new Date(2023, 5, 15).toISOString(),
       includeManuallyAdded: false,
     };
 
@@ -40,18 +49,33 @@ export default function App() {
       console.log("Error getting the steps");
     }
     console.log(results);
+    setSteps(results.value);
   });
+
+    AppleHealthKit.getFlightsClimbed(options, (err, results) => {
+    if (err) {
+      console.log("Error getting the steps");
+    }
+    console.log(results);
+    setFlights(results.value);
+  });
+
   }, [hasPermissions]);
 
   return (
     <View style={styles.container}>
-      <Text>Reyan Ghanim</Text>
+
+      <View style={styles.container}>
+        <Value label="Steps" value={steps.toString()} />
+        <Value label="Flights Climbed" value={flights.toString()}/>
+      </View>
 
       <View style={{ flexDirection: 'row'}}>
         <View style = {styles.valueContainer}>
           <Text style = {styles.label}>Steps</Text>
           <Text style = {styles.value}>5083</Text>
         </View>
+
 
         <View style = {styles.valueContainer}>
           <Text style = {styles.label}>Distance</Text>
