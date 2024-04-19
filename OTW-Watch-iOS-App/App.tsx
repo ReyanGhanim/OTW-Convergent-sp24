@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import AppleHealthKit, {HealthInputOptions, HealthKitPermissions} from 'react-native-health';
 import {useEffect} from 'react';
 import {db, auth} from './firebaseConfig';
@@ -70,6 +70,12 @@ export default function App() {
       <View style={styles.container}>
         <Value label="Steps" value={steps.toString()} />
         <Value label="Flights Climbed" value={flights.toString()}/>
+        <Button 
+          onPress = await addDoc(doc(db, 'collections')) {steps, flights}
+          title = "Send To Trainer"
+          color = "#FFFFFF"
+          />
+
       </View>
 
       <View style={{ flexDirection: 'row'}}>
