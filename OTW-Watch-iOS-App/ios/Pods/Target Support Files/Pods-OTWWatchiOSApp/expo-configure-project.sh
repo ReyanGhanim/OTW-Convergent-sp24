@@ -45,6 +45,6 @@ with_node \
   --no-warnings \
   --eval "require(require.resolve('expo-modules-autolinking', { paths: [require.resolve('expo/package.json')] }))(process.argv.slice(1))" \
   generate-modules-provider  \
-  --target "/Users/reyanghanim/Convergent/OTW-Convergent-sp24/OTW-Watch-iOS-App/ios/Pods/Target Support Files/Pods-OTWWatchiOSApp/ExpoModulesProvider.swift" \
+  --target "/Users/samueljacob/health-tracking/OTW-Convergent-sp24/OTW-Watch-iOS-App/ios/Pods/Target Support Files/Pods-OTWWatchiOSApp/ExpoModulesProvider.swift" \
   --platform "apple" \
   --packages "expo-constants" "expo-dev-launcher" "expo-dev-menu" "expo-file-system" "expo-keep-awake"

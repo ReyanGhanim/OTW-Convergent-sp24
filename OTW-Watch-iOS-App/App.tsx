@@ -3,6 +3,8 @@ import React, {useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AppleHealthKit, {HealthInputOptions, HealthKitPermissions} from 'react-native-health';
 import {useEffect} from 'react';
+import {db, auth} from './firebaseConfig';
+import {doc, updateDoc, setDoc, addDoc, deleteDoc } from "firebase/firestore";
 
 const permissions: HealthKitPermissions = {
   permissions: {
