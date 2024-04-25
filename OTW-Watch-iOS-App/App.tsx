@@ -8,7 +8,8 @@ import {doc, updateDoc, setDoc, addDoc, deleteDoc } from "firebase/firestore";
 
 const permissions: HealthKitPermissions = {
   permissions: {
-    read: [AppleHealthKit.Constants.Permissions.Steps, AppleHealthKit.Constants.Permissions.FlightsClimbed],
+    read: [AppleHealthKit.Constants.Permissions.Steps, AppleHealthKit.Constants.Permissions.FlightsClimbed
+    , AppleHealthKit.Constants.Permissions.SleepAnalysis, AppleHealthKit.Constants.Permissions.HeartRate],
     write: [],
   },
 };
@@ -68,37 +69,20 @@ export default function App() {
     <View style={styles.container}>
 
       <View style={styles.container}>
-        <Value label="Steps" value={steps.toString()} />
-        <Value label="Flights Climbed" value={flights.toString()}/>
-        <Button 
+        <Value label="Today's Steps" value={5083} />
+        <Value label="Weekly Average Steps" value = {6247} />
+        <Value label="Flights Climbed" value={"7 flights"}/>
+        <Value label="Hours Slept" value={"7hr 35min"}/>
+        <Value label="Active Calories Burned" value={"199 cal"}/>
+      </View>
+
+      <View style= {styles.btn}>
+      <Button 
           //onPress = await addDoc(doc(db, 'collections')) {steps, flights}
           title = "Send To Trainer"
-          color = "#FFFFFF"
+          color = "black"
           />
-
       </View>
-
-      <View style={{ flexDirection: 'row'}}>
-        <View style = {styles.valueContainer}>
-          <Text style = {styles.label}>Steps</Text>
-          <Text style = {styles.value}>5083</Text>
-        </View>
-
-
-        <View style = {styles.valueContainer}>
-          <Text style = {styles.label}>Distance</Text>
-          <Text style = {styles.value}>1.65 miles</Text>
-        </View>
-
-        
-      </View>
-
-      
-      <View style = {styles.valueContainer}>
-        <Text style = {styles.label}>Flights Climbed</Text>
-        <Text style = {styles.value}>10 flights</Text>
-      </View>
-      
 
       <StatusBar style="auto" />
     </View>
@@ -125,4 +109,9 @@ const styles = StyleSheet.create({
     color: '#AFB3BE',
     fontWeight: '500',
   },
+  btn: {
+    backgroundColor: "white",
+    fontSize: 36,
+    marginBottom: 200
+  }
 });
