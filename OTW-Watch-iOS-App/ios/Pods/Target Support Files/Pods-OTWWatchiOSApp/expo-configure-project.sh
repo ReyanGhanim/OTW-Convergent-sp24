@@ -47,4 +47,4 @@ with_node \
   generate-modules-provider  \
   --target "/Users/samueljacob/health-tracking/OTW-Convergent-sp24/OTW-Watch-iOS-App/ios/Pods/Target Support Files/Pods-OTWWatchiOSApp/ExpoModulesProvider.swift" \
   --platform "apple" \
-  --packages "expo-constants" "expo-dev-launcher" "expo-dev-menu" "expo-file-system" "expo-keep-awake"
+  --packages "expo-constants" "expo-file-system" "expo-keep-awake"

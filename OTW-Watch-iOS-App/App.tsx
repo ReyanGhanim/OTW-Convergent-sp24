@@ -42,7 +42,7 @@ export default function App() {
     }
 
     const options: HealthInputOptions = {
-      date: new Date(2023, 5, 15).toISOString(),
+      date: new Date(2023, 4, 15).toISOString(),
       includeManuallyAdded: false,
     };
 
@@ -71,7 +71,7 @@ export default function App() {
         <Value label="Steps" value={steps.toString()} />
         <Value label="Flights Climbed" value={flights.toString()}/>
         <Button 
-          onPress = await addDoc(doc(db, 'collections')) {steps, flights}
+          //onPress = await addDoc(doc(db, 'collections')) {steps, flights}
           title = "Send To Trainer"
           color = "#FFFFFF"
           />
