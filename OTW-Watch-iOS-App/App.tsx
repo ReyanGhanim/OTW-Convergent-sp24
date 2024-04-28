@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View, Alert } from 'react-native';
 import AppleHealthKit, {HealthInputOptions, HealthKitPermissions} from 'react-native-health';
 import {useEffect} from 'react';
 import {db, auth} from './firebaseConfig';
-import {doc, updateDoc, setDoc, addDoc, deleteDoc } from "firebase/firestore";
+import {doc, updateDoc, setDoc, addDoc, deleteDoc, collection} from "firebase/firestore";
 
 const permissions: HealthKitPermissions = {
   permissions: {
@@ -64,7 +64,29 @@ export default function App() {
   });
 
   }, [hasPermissions]);
+  
 
+  const sendToTrainer = async () => {
+    try {
+      const healthData = {
+        steps: 5083,
+        weeklyAverageSteps: 6247,
+        flightsClimbed: 10,
+        hoursSlept: "7hr 35min",
+        activeCaloriesBurned: "199 cal"
+
+        // Add other health data here
+      };
+
+      await addDoc(collection(db, 'healthData'), healthData);
+      Alert.alert("Data Successfully Sent", "Your health data has been sent to the trainer successfully!");
+      console.log("Health data sent to trainer successfully!");
+    } catch (error) {
+      console.error("Error sending health data to trainer:", error);
+    }
+  };
+
+  
   return (
     <View style={styles.container}>
 
@@ -78,7 +100,7 @@ export default function App() {
 
       <View style= {styles.btn}>
       <Button 
-          //onPress = await addDoc(doc(db, 'collections')) {steps, flights}
+          onPress = {sendToTrainer}
           title = "Send To Trainer"
           color = "black"
           />
