@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState } from 'react';
-import { Button, StyleSheet, Text, View, Alert } from 'react-native';
+import { Button, StyleSheet, Text, View, Alert, Image } from 'react-native';
 import AppleHealthKit, {HealthInputOptions, HealthKitPermissions} from 'react-native-health';
 import {useEffect} from 'react';
 import {db, auth} from './firebaseConfig';
 import {doc, updateDoc, setDoc, addDoc, deleteDoc, collection} from "firebase/firestore";
+import fitlyLogo from './fitly_logo.png';
 
 const permissions: HealthKitPermissions = {
   permissions: {
@@ -89,6 +90,7 @@ export default function App() {
   
   return (
     <View style={styles.container}>
+      <Image source={fitlyLogo} style={styles.logo}/>
 
       <View style={styles.container}>
         <Value label="Today's Steps" value={5083} />
@@ -134,6 +136,14 @@ const styles = StyleSheet.create({
   btn: {
     backgroundColor: "white",
     fontSize: 36,
-    marginBottom: 200
+    marginBottom: 200,
+    marginTop: 70,
+    borderRadius: 10
+  },
+  logo: {
+    width: 200,
+    height: 100,
+    marginBottom: 20,
+    marginTop: 30
   }
 });
