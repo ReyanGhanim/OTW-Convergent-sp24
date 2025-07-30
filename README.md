@@ -1,7 +1,7 @@
 # Fitly App
 ### Members
-Tech: Samuel Jacob, Reyan Ghanim, Alan Tran, Meghana Chinta 
-Product: Mila Nenadic, Aadit Jha, Elijah Wang Chen 
+Tech: Samuel Jacob, Reyan Ghanim, Alan Tran, Meghana Chinta; 
+Product: Mila Nenadic, Aadit Jha, Elijah Wang Chen; 
 Design: Shireen Pathak, Keaton Bailey
 
 ### Product Description:
